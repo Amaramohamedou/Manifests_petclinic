@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: customers-service
+  name: vets-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: customers-service
+      app: vets-service
   template:
     metadata:
       labels:
-        app: customers-service
+        app: vets-service
     spec:
       containers:
-        - name: customers-service
-          image: 36620759amara/customer-service
+        - name: vets-service
+          image: 36620759amara/vets-service
           ports:
-            - containerPort: 8081
+            - containerPort: 8083
           resources:
             limits:
               memory: "512Mi"
@@ -37,12 +37,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: customers-service
+  name: vets-service
 spec:
   selector:
-    app: customers-service
+    app: vets-service
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 8083
+      targetPort: 8083
   type: LoadBalancer
