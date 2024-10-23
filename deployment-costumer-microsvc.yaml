@@ -38,6 +38,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: customers-service
+  annotations:
+    konghq.com/plugins: proxy-cache-example
 spec:
   selector:
     app: customers-service
