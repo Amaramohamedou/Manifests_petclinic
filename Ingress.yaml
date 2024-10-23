@@ -2,23 +2,25 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: demo-keiken-ingress
+  annotations:
+    konghq.com/strip-path: 'true'
 spec:
-  ingressClassName: nginx
+  ingressClassName: kong
   rules:
-    - host: keiken.demo.ma
-      http:
+    - http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /owners
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: customers-service
                 port:
                   number: 8081
           - path: /vets
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: vets-service
                 port:
                   number: 8083
+

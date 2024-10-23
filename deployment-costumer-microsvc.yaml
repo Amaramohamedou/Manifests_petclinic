@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: customers-service
-          image: 36620759amara/customer-service
+          image: 36620759amara/customer-services
           ports:
             - containerPort: 8081
           resources:
@@ -45,4 +45,4 @@ spec:
     - protocol: TCP
       port: 8081
       targetPort: 8081
-  type: LoadBalancer
+  type: ClusterIP
